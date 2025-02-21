@@ -1,0 +1,217 @@
+{
+	"info": {
+		"_postman_id": "d40b10f9-3de0-438e-9fae-dad3683375f4",
+		"name": "Intern_task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33374042"
+	},
+	"item": [
+		{
+			"name": "getProjects",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIyNmYwMTdjOS1kNDg0LTRkZjktYWE0Zi04ZTI4YmRkNmZkY2IiLCJlbWFpbCI6InVzZXJPbmVAbWFpbC5jb20iLCJpYXQiOjE3NDAxMzY2ODQsImV4cCI6MTc0MDEzODQ4NH0.EcEGEgaU7xXthO7nhTbZUMWQuW_Z-OgDgPlntRsgJws",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/project",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"project"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"UserOne\",\r\n    \"email\": \"userOne@mail.com\",\r\n    \"password\": \"UserOne\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/auth/register",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "createProject",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIyNmYwMTdjOS1kNDg0LTRkZjktYWE0Zi04ZTI4YmRkNmZkY2IiLCJlbWFpbCI6InVzZXJPbmVAbWFpbC5jb20iLCJpYXQiOjE3NDAxMzk2NjUsImV4cCI6MTc0MDE0MTQ2NX0.3FZdvI5TQDNbLCoFMHnGwmSyAHHlxII76BcNwGefqPc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"First project\",\r\n    \"description\": \"Test first project\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/project",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"project"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateProject",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIyNmYwMTdjOS1kNDg0LTRkZjktYWE0Zi04ZTI4YmRkNmZkY2IiLCJlbWFpbCI6InVzZXJPbmVAbWFpbC5jb20iLCJpYXQiOjE3NDAxMzk2NjUsImV4cCI6MTc0MDE0MTQ2NX0.3FZdvI5TQDNbLCoFMHnGwmSyAHHlxII76BcNwGefqPc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Update First project\",\r\n    \"description\": \"Update Test first project\",\r\n    \"id\": \"149e991b-baff-4ed5-87ca-6c2376c472f1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/project",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"project"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getMe",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/auth/getme",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"getme"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createTask",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \":Test\",\r\n    \"description\": \"Test description\",\r\n    \"dueDate\": \"Wed Jan 16 2019 05:30:00 GMT+0530 (IST)\",\r\n    \"projectId\": \"149e991b-baff-4ed5-87ca-6c2376c472f1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/task",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"task"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update Task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \":Update Test\",\r\n    \"description\": \"Test update description\",\r\n    \"dueDate\": \"Wed Jan 16 2019 05:30:00 GMT+0530 (IST)\",\r\n    \"projectId\": \"149e991b-baff-4ed5-87ca-6c2376c472f1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/task",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"task"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTask",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
