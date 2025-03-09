@@ -12,5 +12,11 @@ export declare class AuthController {
         message: string;
         token: string;
     }>;
-    getMe(request: Request): Promise<import("../users/users.entity").UsersORMEntity>;
+    getMe(request: Request): Promise<{
+        id: string;
+        name: string;
+        email: string;
+        projects: import("../project/project.entity").ProjectORMEntity[];
+        tasks: import("../task/task.entity").TaskORMEntity[];
+    }>;
 }

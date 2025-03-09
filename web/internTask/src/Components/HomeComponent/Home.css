@@ -1,5 +1,56 @@
-.homeContainer{
+.home{
+    width: 1000px;
     display: flex;
-    flex-direction: column;
-    gap:15px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: red; */
+    
+
+}
+.userContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    width: 90%;
+ 
+    height: 100%;
+    /* background-color:rgba(0, 128, 0, 0.692) ; */
+    
+    border-radius: 3%;
+}
+.login{
+    width: 100%;
+    display:flex ;
+    align-items:center ;
+}
+
+.welcomeContainer{
+  
+    display: flex;
+    margin-left: 30px;
+    justify-content:center ;
+}
+
+.welcome{
+    font-size: 4em;
+    text-align: center;
+    letter-spacing: 1px;
+    word-spacing: 5px;
+    text-shadow: 3px 3px 4px #000000;
+    color:white;
+}
+
+.handleForm{
+    font-size: 1em;
+    color: white;
+    text-shadow: 3px 3px 4px #000000;
+    letter-spacing: 1px;
+    word-spacing: 5px;
+    span{
+        cursor: pointer;
+        text-decoration: underline white;
+    }
 }
