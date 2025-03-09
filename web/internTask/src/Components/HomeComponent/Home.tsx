@@ -1,51 +1,46 @@
+import { useContext } from 'react'
+import { GeneralContext } from '../Context/GeneralContext'
+import { LoginComponent } from '../LoginComponent/LoginComponent'
 import './Home.css'
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
-import { login } from '../utils/login';
-
-interface Login{
-    email:string,
-    password:string
-}
+import { RegisterComponent } from '../RegisterComponent/RegisterComponent'
 
 export const Home = ()=>{
-    const navigate = useNavigate()
-    const {register, handleSubmit} = useForm<Login>()
-    const [error, setError] = useState('')
+   
+   const {showLoginForm, handleSetShowLoginForm} = useContext(GeneralContext)
 
-    const submitForm = async (data:Login)=>{
-        setError('')
-       const response = await login(data.email, data.password)
-       if(response.token){
-          localStorage.setItem("accessToken", response.token);
-          navigate('projects')
-       }else{
-        setError(response.message)
-       }
-     
-    }
+   const handleLogin = ()=>{
+    handleSetShowLoginForm(true)
+   }
+   const handleRegister = ()=>{
+    handleSetShowLoginForm(false)
+   }
 
     return (
-        <form onSubmit={handleSubmit(submitForm)}>
-        <Box
-        component="form"
-        sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
-        noValidate
-        autoComplete="off"
-        >   
-            
-            <TextField id="outlined-basic" label="Enter email" variant="outlined" {...register('email')} />
-            <TextField id="outlined-basic" label="Password" variant="outlined" {...register('password')} />
-        </Box>
-        <Button variant="contained" type='submit'>Login</Button>
+        <section className='home'>
+            <div className='userContainer'>
+                <div className='welcomeContainer'>
+                    <h3 className='welcome'>Welcome to your favorite project management!</h3>
 
-        <h3>{error}</h3>
-        <p>Dont Have acc, go <a href="/register">here</a> </p>
-        </form>
+                </div>
+            <div className='login'>
+                {showLoginForm && (<section className='formWrapper'>
+                    <LoginComponent/>
+                    <p className='handleForm'>Don't have account? <span onClick={handleRegister}>Register</span></p>
+                </section>)}
+
+                {!showLoginForm && (<section className='formWrapper'>
+                    <RegisterComponent handleLogin={handleLogin}/>
+                    <p className='handleForm'>Already have account? <span onClick={handleLogin}>Login</span></p>
+                    
+                </section>
+                )}
+                
+            </div>
+            
+
+            </div>
+        </section>
+     
 
         
     )

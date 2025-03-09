@@ -10,5 +10,11 @@ export declare class AuthService {
         message: string;
     }>;
     login(user: SignInDTO): Promise<string>;
-    getMe(userId: string): Promise<import("../users/users.entity").UsersORMEntity>;
+    getMe(userId: string): Promise<{
+        id: string;
+        name: string;
+        email: string;
+        projects: import("../project/project.entity").ProjectORMEntity[];
+        tasks: import("../task/task.entity").TaskORMEntity[];
+    }>;
 }

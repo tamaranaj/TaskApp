@@ -1,9 +1,9 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UsersORMEntity } from './users.entity';
 import { Repository } from 'typeorm';
 import { SignUpDTO } from 'src/DTOS/signUp.dto';
-import { hash } from 'bcryptjs';
+
 
 @Injectable()
 export class UsersService {
@@ -26,7 +26,13 @@ export class UsersService {
     
     async getMe(userID:string){
         const user = await this.usersRepository.findOne({where: {id: userID}, relations: ["projects","tasks"]})
-        return user
+        return {
+            id:user.id,
+            name: user.name,
+            email: user.email,
+            projects: user.projects,
+            tasks: user.tasks
+        }
     }
 
 
