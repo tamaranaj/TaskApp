@@ -44,6 +44,7 @@ export const Home = ()=>{
         <Button variant="contained" type='submit'>Login</Button>
 
         <h3>{error}</h3>
+        <p>Dont Have acc, go <a href="/register">here</a> </p>
         </form>
 
         

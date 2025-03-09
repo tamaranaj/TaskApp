@@ -13,16 +13,17 @@ export const Register=()=>{
     const navigate = useNavigate()
     const {register, handleSubmit} = useForm<Register>()
     const [error, setError] = useState('')
-const submitForm = async (data:Register)=>{
+    const submitForm = async (data:Register)=>{
+        console.log(data)
         setError('')
-    const response = await registerUser(data.name, data.email,data.password)
-        if(response.statusCode =='400'){
-            setError(response.message)
-        }else{
-            navigate('login')
-        }
+        const response = await registerUser(data.name, data.email,data.password)
+            if(response.statusCode =='400'){
+                setError(response.message)
+            }else{
+                navigate('/')
+            }
      
-    }
+        }
     return (
             <form onSubmit={handleSubmit(submitForm)}>
             <Box
@@ -31,9 +32,9 @@ const submitForm = async (data:Register)=>{
             noValidate
             autoComplete="off"
             >   
-                <TextField id="outlined-basic" label="Name" variant="outlined" {...register('name')} />
-                <TextField id="outlined-basic" label="Enter email" variant="outlined" {...register('email')}/>
-                <TextField id="outlined-basic" label="Password" variant="outlined" {...register('password')}/>
+                <TextField id="outlined-basica" label="Name" variant="outlined" {...register('name')} />
+                <TextField id="outlined-basicb" label="Enter email" variant="outlined" {...register('email')}/>
+                <TextField id="outlined-basicc" label="Password" variant="outlined" {...register('password')}/>
             
             </Box>
             <Button variant="contained">Register</Button>

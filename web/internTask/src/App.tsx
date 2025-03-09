@@ -4,7 +4,7 @@ import './App.css'
 import { Home } from './Components/HomeComponent/Home'
 import { Project } from './Components/ProjectComponent/Project'
 import { Task } from './Components/TaskComponent/Task'
-import { Register } from './Components/RegisterComponent/Register'
+
 
 function App() {
 
@@ -15,7 +15,6 @@ function App() {
       <Routes>
         
         <Route path='/' element={<Home/>}/>
-        <Route path='/register' element={<Register/>}/>
         <Route path='projects' element={<Project/>}/>
         <Route path='projects/tasks' element={<Task/>}/>
       </Routes>
