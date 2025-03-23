@@ -11,7 +11,7 @@ export class ProjectService {
     constructor(@InjectRepository(ProjectORMEntity) private projectsRepository: Repository<ProjectORMEntity>){}
 
     async getProjects(userID: string){
-        const projects =  await this.projectsRepository.findOne({where: {user: {id: userID}}, relations: ["tasks"]})
+        const projects =  await this.projectsRepository.find({where: {user: {id: userID}}, relations: ["tasks"]})
         console.log("first", projects)
         if(!projects){
             throw new NotFoundException('No projects found!')
