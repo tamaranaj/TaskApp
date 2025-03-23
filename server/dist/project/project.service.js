@@ -22,7 +22,7 @@ let ProjectService = class ProjectService {
         this.projectsRepository = projectsRepository;
     }
     async getProjects(userID) {
-        const projects = await this.projectsRepository.findOne({ where: { user: { id: userID } }, relations: ["tasks"] });
+        const projects = await this.projectsRepository.find({ where: { user: { id: userID } }, relations: ["tasks"] });
         console.log("first", projects);
         if (!projects) {
             throw new common_1.NotFoundException('No projects found!');
