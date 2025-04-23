@@ -1,0 +1,19 @@
+.overViewContainer{
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.welcomeMessage{
+    font-family: 'Courier New', Courier, monospace;
+    
+}
+
+.info{
+    width: 100%;
+    display: flex ;
+    flex-direction: column;
+align-items: flex-start
+}

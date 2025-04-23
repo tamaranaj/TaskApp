@@ -4,7 +4,7 @@ import { User } from "../Types/user.interface"
 interface ContextDefault{
     showLoginForm: boolean 
     loggedIn: boolean
-    userInfo: User | undefined
+    userInfo: User,
     handleSetUserInfo: (user:User)=>void
     handleSetShowLoginForm: (value: boolean) => void
     handleSetLoggedIn: (value: boolean) => void
@@ -13,7 +13,7 @@ interface ContextDefault{
 const contextDefaultValues : ContextDefault = {
     showLoginForm: true,
     loggedIn: false,
-    userInfo: undefined,
+    userInfo: {} as User,
     handleSetUserInfo: ()=>{},
     handleSetShowLoginForm : ()=> {},
     handleSetLoggedIn :  ()=> {}
@@ -34,7 +34,7 @@ export const GeneralContextProvider = ({children}: GeneralContextProviderProps)=
         setShowLoginForm(value)
     }
 
-    const handleSetUserInfo = (user: User|undefined)=>{
+    const handleSetUserInfo = (user: User)=>{
         setUserInfo(user)
     }
     

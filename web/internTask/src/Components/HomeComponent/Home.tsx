@@ -3,6 +3,8 @@ import { GeneralContext } from '../Context/GeneralContext'
 import { LoginComponent } from '../LoginComponent/LoginComponent'
 import './Home.css'
 import { RegisterComponent } from '../RegisterComponent/RegisterComponent'
+import SplitText from './SplitText'
+
 
 export const Home = ()=>{
    
@@ -18,10 +20,10 @@ export const Home = ()=>{
     return (
         <section className='home'>
             <div className='userContainer'>
-                <div className='welcomeContainer'>
-                    <h3 className='welcome'>Welcome to your favorite project management!</h3>
 
-                </div>
+                <SplitText/>
+                    {/* <h3 className='welcome'>Welcome to your favorite project management!</h3> */}
+
             <div className='login'>
                 {showLoginForm && (<section className='formWrapper'>
                     <LoginComponent/>

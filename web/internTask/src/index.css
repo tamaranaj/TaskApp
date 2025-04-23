@@ -5,10 +5,9 @@
 body{
   margin: 0px;
   padding: 0px;
-  display: flex;
+  font-family: 'Courier New', Courier, monospace;
   justify-content: center;
   height: 100%;
-  background-image: url(assets/d4903decf07292efd08c17970a3dd6c4.jpg);
-  background-size: cover; 
-  background-repeat: no-repeat; 
+  background-color: black;
+
 }

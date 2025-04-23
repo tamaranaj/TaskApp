@@ -1,11 +1,12 @@
 import { Button, TextField } from "@mui/material"
-import { useState } from "react"
+import { useState,useEffect, useRef } from "react"
 import { useForm } from "react-hook-form"
 import './RegisterComponent.css'
 import { registerUser } from "../utils/register"
 import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { animate } from "motion";
 
 interface RegisterComponentProps{
     handleLogin: ()=>void
@@ -22,6 +23,18 @@ export const RegisterComponent=({handleLogin}: RegisterComponentProps)=>{
     const [error, setError] = useState('')
     const [showPassword, setShowPassword]=useState(false)
     const handleClickShowPassword = () => setShowPassword((show) => !show);
+    const formRef = useRef<HTMLFormElement>(null);
+
+    useEffect(() => {
+      if (formRef.current) {
+        animate(
+          formRef.current,
+          { opacity: [0, 1], y: [30, 0] },
+          { duration:3, ease: "easeOut" },
+          
+        );
+      }
+    }, []);
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
       };
@@ -40,7 +53,7 @@ export const RegisterComponent=({handleLogin}: RegisterComponentProps)=>{
      
         }
     return (
-            <form onSubmit={handleSubmit(submitForm)} className="registerForm">
+            <form ref={formRef} onSubmit={handleSubmit(submitForm)} className="registerForm my-form">
                 
                 <FormControl sx={{ m: 1, width: '30ch' }} variant="outlined">
                 <TextField id="outlined-basica" label="Name" variant="outlined" {...register('name')} className="input" />
