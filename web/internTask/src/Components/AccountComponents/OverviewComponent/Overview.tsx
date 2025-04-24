@@ -10,8 +10,8 @@ export const Overview = ()=>{
             <h2 className="welcomeMessage">Welcome {userInfo.name}</h2>
 
             <div  className="info">
-                <p>Projects you work on: {userInfo.projects.length}</p>
-                <p>Sum of tasks: {userInfo.tasks.length}</p>
+                <p>Projects you work on: {userInfo?.projects?.length}</p>
+                <p>Sum of tasks: {userInfo?.tasks?.length}</p>
             </div>
         </div>
     )
