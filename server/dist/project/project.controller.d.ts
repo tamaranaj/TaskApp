@@ -6,6 +6,7 @@ export declare class ProjectController {
     private readonly projectService;
     constructor(projectService: ProjectService);
     getProjects(request: Request): Promise<import("./project.entity").ProjectORMEntity[]>;
+    getProjectById(id: string): Promise<import("./project.entity").ProjectORMEntity>;
     create(request: Request, project: CreateProjectDTO): Promise<import("./project.entity").ProjectORMEntity>;
     updateProject(update: UpdateProjectDTO): Promise<{
         message: string;

@@ -1,19 +1,22 @@
 import Button from "@mui/material/Button"
-import { Projects } from "../../Types/projects.interface"
 import { OutlinedCard } from "./ProjectCard/Card"
 import AddIcon from '@mui/icons-material/Add';
 import './Projects.css'
 import { useNavigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { getProjects } from "../../utils/getProjects";
+import { GeneralContext } from "../../Context/GeneralContext";
 
-interface ProjectsProps{
-    projects: Projects[]
-}
 
-export const ProjectsComponent = ({projects}: ProjectsProps)=>{
+export const ProjectsComponent = ()=>{
     const navigate = useNavigate()
+    const{projects, handleSetProjects}=useContext(GeneralContext)
     const handleNewProject = ()=>{
         navigate('new')
     }
+    useEffect(()=>{
+        getProjects().then(res=>handleSetProjects(res))
+    })
     return(
         <div className="projectsContainer">
             <div>

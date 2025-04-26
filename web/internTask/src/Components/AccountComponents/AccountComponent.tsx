@@ -9,6 +9,7 @@ import { Settings } from './SettingsComponent/Settings';
 import { Tasks } from './TasksComponent/Tasks';
 import { getUser } from '../utils/getUser';
 import { NewProject } from './ProjectsComponent/NewProject/NewProject';
+import { EditProject } from './ProjectsComponent/EditProject/EditProject';
 
 export const AccountComponent = ()=>{
     const{userInfo,handleSetUserInfo}=useContext(GeneralContext)
@@ -67,10 +68,12 @@ export const AccountComponent = ()=>{
       <Box sx={{  flexGrow: 2, p: 3  }}>
         <Routes>
           <Route path="" element={<div style={{width:'100%'}}><Overview/></div>} />
-          <Route path="projects" element={<div style={{width:'100%'}}><ProjectsComponent projects={userInfo.projects}/></div>} />
+          <Route path="projects" element={<div style={{width:'100%'}}><ProjectsComponent/></div>} />
           <Route path="tasks" element={<div style={{width:'100%'}}><Tasks/></div>} />
           <Route path="settings" element={<div style={{width:'100%'}}><Settings/></div>} />
           <Route path='projects/new' element={<div style={{width:'100%'}}><NewProject/></div>}/>
+          <Route path='projects/:projectId/newTask' element={<div style={{width:'100%'}}><p>add task</p></div>}/>
+          <Route path='projects/:projectId/edit' element={<div style={{width:'100%'}}><EditProject/></div>}/>
         </Routes>
       </Box>
     </Box>
