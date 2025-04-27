@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, Post, Put, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, Param, Post, Put, Req, UseGuards } from '@nestjs/common';
 import { AuthGuard } from 'src/auth/guards/auth.guard';
 import { ProjectService } from './project.service';
 import { Request } from 'express';
@@ -18,6 +18,13 @@ export class ProjectController {
         const projects= await this.projectService.getProjects(user)
         return projects
     }
+    
+    @Get(':id')
+    async getProjectById(@Param('id')id:string){
+        const response = await this.projectService.findProject(id)
+        return response
+    }
+
 
     @Post()
     @HttpCode(201)

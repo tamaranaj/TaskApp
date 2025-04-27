@@ -27,6 +27,10 @@ let ProjectController = class ProjectController {
         const projects = await this.projectService.getProjects(user);
         return projects;
     }
+    async getProjectById(id) {
+        const response = await this.projectService.findProject(id);
+        return response;
+    }
     async create(request, project) {
         const user = request['user'].userID;
         const created = await this.projectService.createProject(user, project);
@@ -45,6 +49,13 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], ProjectController.prototype, "getProjects", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], ProjectController.prototype, "getProjectById", null);
 __decorate([
     (0, common_1.Post)(),
     (0, common_1.HttpCode)(201),

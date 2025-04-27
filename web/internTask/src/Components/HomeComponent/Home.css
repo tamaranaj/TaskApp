@@ -1,8 +1,8 @@
 .home{
-    width: 1000px;
+    margin-top: 50px;
     display: flex;
-    height: 500px;
-    display: flex;
+    /* height: 500px; */
+   width: 100%;
     align-items: center;
     justify-content: center;
     /* background-color: red; */
@@ -10,11 +10,12 @@
 
 }
 .userContainer{
+   
     display: grid;
     grid-template-columns: 1fr 1fr;
-    justify-items: center;
+    /* justify-items: center; */
     align-items: center;
-    width: 90%;
+   
  
     height: 100%;
     /* background-color:rgba(0, 128, 0, 0.692) ; */
@@ -25,6 +26,7 @@
     width: 100%;
     display:flex ;
     align-items:center ;
+    justify-content:center ;
 }
 
 .welcomeContainer{
