@@ -8,5 +8,5 @@ export const getProjectById = async (id:string)=>{
         }
        })
        const data: Projects = await response.json();
-       return {name: data.name, description:data.description}
+       return data
 }

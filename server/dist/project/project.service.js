@@ -41,7 +41,7 @@ let ProjectService = class ProjectService {
         return { message: `Update success.` };
     }
     async findProject(projectId) {
-        const project = await this.projectsRepository.findOne({ where: { id: projectId } });
+        const project = await this.projectsRepository.findOne({ where: { id: projectId }, relations: ["tasks"] });
         return project;
     }
 };

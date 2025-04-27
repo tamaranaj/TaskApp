@@ -56,12 +56,12 @@ export const RegisterComponent=({handleLogin}: RegisterComponentProps)=>{
             <form ref={formRef} onSubmit={handleSubmit(submitForm)} className="registerForm my-form">
                 
                 <FormControl sx={{ m: 1, width: '30ch' }} variant="outlined">
-                <TextField id="outlined-basica" label="Name" variant="outlined" {...register('name')} className="input" />
+                <TextField id="outlined-basica" label="Name" variant="outlined" fullWidth {...register('name')} className="input" />
                 </FormControl>
                 
 
                 <FormControl sx={{ m: 1, width: '30ch' }} variant="outlined">
-                <TextField id="outlined-basicba" label="Email" variant="outlined" {...register('email')} className="input"/>
+                <TextField id="outlined-basicba" label="Email" variant="outlined" fullWidth {...register('email')} className="input"/>
                 </FormControl>
                
                 <FormControl sx={{ m: 1, width: '30ch' }} variant="outlined">

@@ -1,0 +1,28 @@
+.detailsContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  
+}
+
+.projectNameContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.row{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.input{
+    background-color: white;
+    width: 50%;
+    margin: 10px;
+    border-radius: 2px;
+}

@@ -11,16 +11,16 @@ interface ContextDefault{
         name:string,
         description:string
     },
-    editProject:{
-        name:string,
-        description:string
-    },
-    handleEditProjectDefault: (data: {
-        name: string;
-        description: string;
-    }) => void,
-    handleEditProject: (item: string, prop: string) => void,
-    resetEditProject: ()=>void,
+    // editProject:{
+    //     name:string,
+    //     description:string
+    // },
+    // handleEditProjectDefault: (data: {
+    //     name: string;
+    //     description: string;
+    // }) => void,
+    // handleEditProject: (item: string, prop: string) => void,
+    // resetEditProject: ()=>void,
     resetNewProject: () => void,
     handleSetNewProject: (item: string, prop: string) => void
     handleSetProjects: (items: Projects[]) => void,
@@ -38,13 +38,13 @@ const contextDefaultValues : ContextDefault = {
         name:'',
         description:''
     },
-    editProject: {
-        name:'',
-        description:''
-    },
-    handleEditProjectDefault:()=>{},
-    resetEditProject: () => {},
-    handleEditProject: () => {},
+    // editProject: {
+    //     name:'',
+    //     description:''
+    // },
+    // handleEditProjectDefault:()=>{},
+    // resetEditProject: () => {},
+    // handleEditProject: () => {},
     resetNewProject: () => {},
     handleSetNewProject: () => {},
     handleSetProjects: () => {},
@@ -65,20 +65,20 @@ export const GeneralContextProvider = ({children}: GeneralContextProviderProps)=
     const [userInfo,setUserInfo] = useState(contextDefaultValues.userInfo)
     const[projects,setProjects]=useState(contextDefaultValues.projects)
     const [newProject,setNewProject]=useState(contextDefaultValues.newProject)
-    const[editProject,setEditProject] = useState(contextDefaultValues.editProject)
+    // const[editProject,setEditProject] = useState(contextDefaultValues.editProject)
 
-    const handleEditProject = (item:string, prop:string)=>{
-        setEditProject({
-            ...editProject,
-            [prop]: item
-        })
-    }
-    const handleEditProjectDefault = (data:{name:string, description:string})=>{
-        setEditProject(data)
-    }
-    const resetEditProject = ()=>{
-        setEditProject(contextDefaultValues.editProject)
-    }
+    // const handleEditProject = (item:string, prop:string)=>{
+    //     setEditProject({
+    //         ...editProject,
+    //         [prop]: item
+    //     })
+    // }
+    // const handleEditProjectDefault = (data:{name:string, description:string})=>{
+    //     setEditProject(data)
+    // }
+    // const resetEditProject = ()=>{
+    //     setEditProject(contextDefaultValues.editProject)
+    // }
     const resetNewProject = ()=>{
         setNewProject(contextDefaultValues.newProject)
     }
@@ -106,7 +106,7 @@ export const GeneralContextProvider = ({children}: GeneralContextProviderProps)=
 
     return(
         <GeneralContext.Provider
-        value={{showLoginForm, loggedIn,userInfo,projects,newProject,editProject,handleEditProjectDefault,resetEditProject, handleEditProject,resetNewProject,handleSetNewProject,handleSetProjects, handleSetUserInfo, handleSetShowLoginForm, handleSetLoggedIn}}>
+        value={{showLoginForm, loggedIn,userInfo,projects,newProject,resetNewProject,handleSetNewProject,handleSetProjects, handleSetUserInfo, handleSetShowLoginForm, handleSetLoggedIn}}>
             {children}
         </GeneralContext.Provider>
     )

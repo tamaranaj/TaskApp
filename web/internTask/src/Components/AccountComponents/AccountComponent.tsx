@@ -10,6 +10,7 @@ import { Tasks } from './TasksComponent/Tasks';
 import { getUser } from '../utils/getUser';
 import { NewProject } from './ProjectsComponent/NewProject/NewProject';
 import { EditProject } from './ProjectsComponent/EditProject/EditProject';
+import { ProjectDetails } from './ProjectsComponent/ProjectDetails/ProjectDetails';
 
 export const AccountComponent = ()=>{
     const{userInfo,handleSetUserInfo}=useContext(GeneralContext)
@@ -73,7 +74,8 @@ export const AccountComponent = ()=>{
           <Route path="settings" element={<div style={{width:'100%'}}><Settings/></div>} />
           <Route path='projects/new' element={<div style={{width:'100%'}}><NewProject/></div>}/>
           <Route path='projects/:projectId/newTask' element={<div style={{width:'100%'}}><p>add task</p></div>}/>
-          <Route path='projects/:projectId/edit' element={<div style={{width:'100%'}}><EditProject/></div>}/>
+          <Route path='projects/:projectId/' element={<div style={{width:'100%'}}><ProjectDetails/></div>}/>
+          <Route path='projects/:projectId/task/:taskId' element={<div style={{width:'100%'}}><p>Edit task</p></div>}/>
         </Routes>
       </Box>
     </Box>

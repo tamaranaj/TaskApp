@@ -62,11 +62,11 @@ export const LoginComponent = ()=>{
     return (
         <form ref={formRef} onSubmit={handleSubmit(submitForm)} className='loginForm my-form'>
             <FormControl sx={{ m: 1, width: '30ch' }} variant="outlined">
-            <TextField id="outlined-basica" label="Email" variant="outlined" {...register('email')} className='input' />
+            <TextField id="outlined-basica" label="Email" variant="outlined" fullWidth {...register('email')} className='input' />
             </FormControl>
             
             <FormControl sx={{ m: 1, width: '30ch' }} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <InputLabel htmlFor="outlined-adornment-password" >Password</InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
             type={showPassword ? 'text' : 'password'}

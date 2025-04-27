@@ -16,7 +16,7 @@ export const ProjectsComponent = ()=>{
     }
     useEffect(()=>{
         getProjects().then(res=>handleSetProjects(res))
-    })
+    },[])
     return(
         <div className="projectsContainer">
             <div>
@@ -28,7 +28,7 @@ export const ProjectsComponent = ()=>{
            
             <section className="projectSection">
                 {projects.map((i)=>(
-                    <OutlinedCard key={i.id} id={i.id} name={i.name} description={i.description}/>
+                    <OutlinedCard key={i.id} id={i.id} name={i.name}/>
                 ))}
             </section>
         </div>

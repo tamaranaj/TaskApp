@@ -1,18 +1,15 @@
-import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import EditIcon from '@mui/icons-material/Edit';
-import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
 
 interface OutlinedCardProps {
   id: string;
   name: string;
-  description: string;
+  
 }
 
 const bull = (
@@ -24,25 +21,17 @@ const bull = (
   </Box>
 );
 
-export const OutlinedCard = ({ id, name, description }: OutlinedCardProps) => {
+export const OutlinedCard = ({ id, name }: OutlinedCardProps) => {
   const navigate = useNavigate()
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleNavigateAddTask = ()=>{
-    navigate(`${id}/newTask`)
+  const handleNavigateDetails = ()=>{
+    navigate(`${id}`)
   }
-  const handleNavigateEditProject = ()=>{
-    navigate(`${id}/edit`)
-  }
-
   return (
     <Box sx={{ width: '100%' }}>
       <Card
         variant="outlined"
         className="cardContainer"
         sx={{ backgroundColor: 'white' }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
       >
         <CardContent sx={{ padding: '5px', paddingBottom: '0px' }}>
           <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 11 }}>
@@ -52,13 +41,9 @@ export const OutlinedCard = ({ id, name, description }: OutlinedCardProps) => {
             <span style={{ textWrap: 'wrap', fontFamily:'inherit',fontSize:'1em' }}>{bull}{name}{bull}</span>
           </Typography>
         </CardContent>
-        {isHovered && (
             <CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
-          <Button size="small" onClick={handleNavigateAddTask}><AddIcon fontSize="small" /> task</Button>
-          <Button size="small" onClick={handleNavigateEditProject}><EditIcon fontSize="small" /></Button>
-        </CardActions>
-          )}
-        
+              <Button size="small" onClick={handleNavigateDetails}>Details</Button>
+        </CardActions>  
       </Card>
     </Box>
   );

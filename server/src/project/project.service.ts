@@ -41,10 +41,10 @@ export class ProjectService {
 
     async findProject(projectId:string){
         
-        const project = await this.projectsRepository.findOne({where: {id: projectId}})
+        const project = await this.projectsRepository.findOne({where: {id: projectId},relations: ["tasks"]})
         return project
      
     }
     
-
+    
 }
