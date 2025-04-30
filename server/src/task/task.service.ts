@@ -4,6 +4,7 @@ import { TaskORMEntity } from './task.entity';
 import { Repository } from 'typeorm';
 import { CreateTaskDTO } from 'src/DTOS/createTask.dto';
 import { UpdateTaskDTO } from 'src/DTOS/updateTask.dto';
+import { TaskStatus } from './taskStatus.enum';
 
 @Injectable()
 export class TaskService {
@@ -18,7 +19,11 @@ export class TaskService {
         return tasks
     }
 
-    async createTask(userId:string, newTask: CreateTaskDTO){
+    async createTask(userId:string, task: CreateTaskDTO){
+        const newTask = {
+            ...task,
+            status:TaskStatus.new
+        }
         const creation = this.taskRepository.create({
             ...newTask,userID:userId
         })
