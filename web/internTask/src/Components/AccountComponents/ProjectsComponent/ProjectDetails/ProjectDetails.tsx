@@ -3,7 +3,7 @@ import './ProjectDetails.css'
 import { Projects } from '../../../Types/projects.interface'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getProjectById } from '../../../utils/getProjectById'
-import CollapsibleTable from '../TaskTable/TaskTable'
+import CollapsibleTable from '../../TasksComponent/TaskTable/TaskTable'
 import Button from '@mui/material/Button'
 import EditIcon from '@mui/icons-material/Edit';
 import TextField from '@mui/material/TextField'
@@ -12,6 +12,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import { editingProject } from '../../../utils/editProject'
 import { IconButton } from '@mui/material'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { TaskForm } from '../../TasksComponent/TaskForm/TaskForm'
 export const ProjectDetails = () => {
 
     const [project, setProject] = useState<Projects>({
@@ -21,6 +22,8 @@ export const ProjectDetails = () => {
         userID: '',
         tasks: []
     })
+    const[newTask,setNewTask] = useState(false)
+    const[newTaskAdded,setNewTaskAdded] = useState(false)
     const [seeTasks, setSeeTasks] = useState(false)
     const [editProject, setEditProject] = useState({ name: '', description: '' })
     const [edit, setEdit] = useState(false)
@@ -34,8 +37,14 @@ export const ProjectDetails = () => {
                 console.log('response', res)
             })
         }
-    }, [isEdited])
+    }, [isEdited,newTaskAdded])
+
+    const handleNewTaskAdded = (value:boolean)=>{
+        setNewTaskAdded(value)
+    }
+
     const handleSeeTasks = () => {
+        setNewTask(false)
         setSeeTasks(true)
     }
     const handleSave = async () => {
@@ -78,12 +87,9 @@ export const ProjectDetails = () => {
         navigate(`/account/${project.userID}/projects`)
     }
 
-    const handleNewProject = ()=>{
-        navigate(`/account/${project.userID}/projects/new`)
-    }
-
     const handleNewTask = ()=>{
-        navigate('newTask')
+        setSeeTasks(false)
+        setNewTask(true)
     }
 
     return (
@@ -125,7 +131,7 @@ export const ProjectDetails = () => {
 
 
 
-            <div>
+            <div style={{margin:'20px',display:'flex',justifyContent:'center',gap:'5px'}}>
                 <Button
                     variant={
                         !seeTasks
@@ -137,21 +143,23 @@ export const ProjectDetails = () => {
                     See Tasks
                 </Button>
                 <Button
-                    variant='contained'
+                    variant={
+                        !newTask
+                            ? 'contained'
+                            : 'outlined'
+                    }
                     onClick={handleNewTask}
                 >
                     New Task
                 </Button>
-                <Button
-                    variant='contained'
-                  onClick={handleNewProject}
-                >
-                    New Project
-                </Button>
+                
             </div>
             {seeTasks && project.tasks && (<div className='tableContainer'>
                 <CollapsibleTable tasks={project.tasks} />
+
+            
             </div>)}
+            {newTask && <div className='newTaskContainer'><TaskForm handleNewTaskAdded={handleNewTaskAdded}/></div>}
         </div>
     )
 }

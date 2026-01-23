@@ -17,13 +17,15 @@ import { useState } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import './TaskTable.css'
 import { useNavigate } from 'react-router-dom';
+import dayjs from 'dayjs'
 
 function createData(
-  {id,title,createdAt,description,dueDate}: Task
+  {id,title,createdAt,description,dueDate, status}: Task
 ) {
 return {
   id,
   title,
+  status,
   createdAt,
   description,
   dueDate
@@ -54,16 +56,18 @@ function Row(props: { row: ReturnType<typeof createData> }) {
         <TableCell component="th" scope="row">
           {row.title}
         </TableCell>
-        <TableCell align="center">{row.createdAt}</TableCell>
+        <TableCell component="th" scope="row">{row.status}</TableCell>
+        <TableCell component="th" scope="row">{dayjs(row.createdAt).format('MMM D, YYYY h:mm A')}</TableCell>
+        
       </TableRow>
-      <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box sx={{ margin: 1 }}>
+      <TableRow  sx={{width:'100%'}}>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={4}>
+          <Collapse in={open} timeout="auto" unmountOnExit >
+            <Box sx={{ margin: 1 ,display:'flex', justifyContent:'space-between',flexDirection:'column'}}>
               <Typography variant="h6" gutterBottom component="div">
             Details
               </Typography>
-              <Table size="small" aria-label="purchases">
+              <Table size="medium" aria-label="purchases">
                 <TableHead>
                   <TableRow>
                     <TableCell>Description</TableCell>
@@ -96,11 +100,13 @@ export default function CollapsibleTable({ tasks = [] }: CollapsibleTableProps) 
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
-        <TableHead>
-          <TableRow>
+        <TableHead className='tableHead'>
+          <TableRow >
             <TableCell />
-            <TableCell>Task title:</TableCell>
-            <TableCell align="right">Created at:</TableCell>
+            <TableCell sx={{fontSize:'1em'}}>Task title</TableCell>
+            <TableCell sx={{fontSize:'1em'}} >Status</TableCell>
+            <TableCell sx={{fontSize:'1em'}}>Date created</TableCell>
+            
           </TableRow>
         </TableHead>
         <TableBody>
@@ -111,7 +117,7 @@ export default function CollapsibleTable({ tasks = [] }: CollapsibleTableProps) 
           ) : (
             <TableRow>
               <TableCell colSpan={3} align="center">
-                Loading tasks...
+                There is not tasks yet.
               </TableCell>
             </TableRow>
           )}

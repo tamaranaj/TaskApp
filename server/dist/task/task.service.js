@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const task_entity_1 = require("./task.entity");
 const typeorm_2 = require("typeorm");
+const taskStatus_enum_1 = require("./taskStatus.enum");
 let TaskService = class TaskService {
     constructor(taskRepository) {
         this.taskRepository = taskRepository;
@@ -28,7 +29,11 @@ let TaskService = class TaskService {
         }
         return tasks;
     }
-    async createTask(userId, newTask) {
+    async createTask(userId, task) {
+        const newTask = {
+            ...task,
+            status: taskStatus_enum_1.TaskStatus.new
+        };
         const creation = this.taskRepository.create({
             ...newTask, userID: userId
         });

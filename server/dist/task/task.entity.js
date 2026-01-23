@@ -13,6 +13,7 @@ exports.TaskORMEntity = void 0;
 const project_entity_1 = require("../project/project.entity");
 const users_entity_1 = require("../users/users.entity");
 const typeorm_1 = require("typeorm");
+const taskStatus_enum_1 = require("./taskStatus.enum");
 let TaskORMEntity = class TaskORMEntity {
 };
 exports.TaskORMEntity = TaskORMEntity;
@@ -36,6 +37,10 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], TaskORMEntity.prototype, "dueDate", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], TaskORMEntity.prototype, "status", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => project_entity_1.ProjectORMEntity, (project) => project.tasks),
     (0, typeorm_1.JoinColumn)({ name: 'projectID' }),
