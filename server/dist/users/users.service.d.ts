@@ -8,5 +8,11 @@ export declare class UsersService {
     createUser(user: SignUpDTO): Promise<{
         message: string;
     }>;
-    getMe(userID: string): Promise<UsersORMEntity>;
+    getMe(userID: string): Promise<{
+        id: string;
+        name: string;
+        email: string;
+        projects: import("../project/project.entity").ProjectORMEntity[];
+        tasks: import("../task/task.entity").TaskORMEntity[];
+    }>;
 }

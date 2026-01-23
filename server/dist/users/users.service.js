@@ -32,7 +32,13 @@ let UsersService = class UsersService {
     }
     async getMe(userID) {
         const user = await this.usersRepository.findOne({ where: { id: userID }, relations: ["projects", "tasks"] });
-        return user;
+        return {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            projects: user.projects,
+            tasks: user.tasks
+        };
     }
 };
 exports.UsersService = UsersService;

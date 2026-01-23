@@ -1,6 +1,7 @@
 import { ProjectORMEntity } from "src/project/project.entity";
 import { UsersORMEntity } from "src/users/users.entity";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { TaskStatus } from "./taskStatus.enum";
 
 @Entity()
 export class TaskORMEntity{
@@ -18,6 +19,9 @@ export class TaskORMEntity{
 
     @Column()
     dueDate: string
+
+    @Column()
+    status: TaskStatus
 
     @ManyToOne(()=>ProjectORMEntity,(project)=>project.tasks)
     @JoinColumn({name:'projectID'})
